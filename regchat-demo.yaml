@@ -62,8 +62,9 @@ registration:
   - "ulu-limited.com"
   - "wfmasia.com"
   - "parkwayasia.com"
-  - "@hatariexpress.com"
-    
+  - "hatariexpress.com"
+  - "draco-investments.com"
+
 # Example Balance settings
 balance:
   enabled: true
