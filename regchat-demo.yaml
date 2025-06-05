@@ -83,15 +83,16 @@ registration:
   - "goldstreamfund.com"
   - "turiyacap.com"
   - "kaleido-cap.com"
+  - "hk.oasiscm.com"
   
 # Example Balance settings
 balance:
   enabled: true
-  startBalance: 60000
+  startBalance: 300000
   autoRefillEnabled: true
   refillIntervalValue: 1
   refillIntervalUnit: 'days'
-  refillAmount: 2000
+  refillAmount: 3000
 
 speech:
   speechTab:
