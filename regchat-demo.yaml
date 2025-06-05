@@ -1,0 +1,242 @@
+# For more information, see the Configuration Guide:
+# https://www.librechat.ai/docs/configuration/librechat_yaml
+
+# Configuration version (required)
+version: 1.2.1
+
+# Cache settings: Set to true to enable caching
+cache: true
+
+# File strategy s3/firebase
+# fileStrategy: "s3"
+fileStrategy: "firebase"
+fileConfig:
+  endpoints:
+    assistants:
+      fileLimit: 5
+      # Maximum size for an individual file in MB
+      fileSizeLimit: 10
+      # Maximum total size for all files in a single request in MB
+      totalSizeLimit: 50 
+      # In case you wish to limit certain filetypes
+      supportedMimeTypes: 
+        - "image/.*"
+        - "application/pdf"
+        - "application/msword"
+    openAI:
+    # Disables file uploading to the OpenAI endpoint
+      disabled: false
+    default:
+      totalSizeLimit: 10
+    # Example for custom endpoints
+    # YourCustomEndpointName:
+    #   fileLimit: 2
+    #   fileSizeLimit: 5
+  # Global server file size limit in MB
+  serverFileSizeLimit: 10  
+  # Limit for user avatar image size in MB, default: 2 MB
+  avatarSizeLimit: 2
+  
+webSearch:
+  # ... variable configurations ...
+  searchProvider: "serper"    # Only use Serper for search
+  scraperType: "firecrawl"    # Only use Firecrawl for scraping
+  rerankerType: "jina"        # Only use Jina for reranking
+
+# Example Cloudflare turnstile (optional)
+#turnstile:
+#  siteKey: "your-site-key-here"
+#  options:
+#    language: "auto"    # "auto" or an ISO 639-1 language code (e.g. en)
+#    size: "normal"      # Options: "normal", "compact", "flexible", or "invisible"
+
+# Example Registration Object Structure (optional)
+registration:
+  socialLogins: ['github', 'google', 'apple']
+  allowedDomains:
+  - "generis.ai"
+  - "oasiscm.com"
+  - "ulu-limited.com"
+  - "wfmasia.com"
+  - "parkwayasia.com"
+  - "@hatariexpress.com"
+    
+# Example Balance settings
+balance:
+  enabled: true
+  startBalance: 30000
+  autoRefillEnabled: false
+  refillIntervalValue: 1
+  refillIntervalUnit: 'days'
+  refillAmount: 1000
+
+speech:
+  speechTab:
+    conversationMode: true
+    advancedMode: false
+    speechToText:
+      engineSTT: "external"
+      languageSTT: "English (US)"
+      autoTranscribeAudio: true
+      decibelValue: -45
+      autoSendText: 0
+    textToSpeech:
+      engineTTS: "external"
+      voice: "alloy"
+      languageTTS: "en"
+      automaticPlayback: true
+      playbackRate: 1.0
+      cacheTTS: true
+  tts:
+    openai:
+      apiKey: '${TTS_API_KEY}'
+      model: 'tts-1'
+      voices: ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer']
+  stt:
+    openai:
+      apiKey: '${STT_API_KEY}'
+      model: 'whisper-1'
+
+rateLimits:
+  fileUploads:
+    ipMax: 100
+    ipWindowInMinutes: 60  # Rate limit window for file uploads per IP
+    userMax: 50
+    userWindowInMinutes: 60  # Rate limit window for file uploads per user
+  conversationsImport:
+    ipMax: 100
+    ipWindowInMinutes: 60  # Rate limit window for conversation imports per IP
+    userMax: 50
+    userWindowInMinutes: 60  # Rate limit window for conversation imports per user
+
+# Example Actions Object Structure
+actions:
+  allowedDomains:
+    - "swapi.dev"
+    - "librechat.ai"
+    - "google.com"
+
+# Example MCP Servers Object Structure
+# mcpServers:
+#   everything:
+#     # type: sse # type can optionally be omitted
+#     url: http://localhost:3001/sse
+#     timeout: 60000  # 1 minute timeout for this server, this is the default timeout for MCP servers.
+#   puppeteer:
+#     type: stdio
+#     command: npx
+#     args:
+#       - -y
+#       - "@modelcontextprotocol/server-puppeteer"
+#     timeout: 300000  # 5 minutes timeout for this server
+#   filesystem:
+#     # type: stdio
+#     command: npx
+#     args:
+#       - -y
+#       - "@modelcontextprotocol/server-filesystem"
+#       - /home/user/LibreChat/
+#     iconPath: /home/user/LibreChat/client/public/assets/logo.svg
+#   mcp-obsidian:
+#     command: npx
+#     args:
+#       - -y
+#       - "mcp-obsidian"
+#       - /path/to/obsidian/vault
+
+# Definition of custom endpoints
+endpoints:
+ assistants:
+   disableBuilder: true # Disable Assistants Builder Interface by setting to `true`
+#   pollIntervalMs: 3000  # Polling interval for checking assistant updates
+#   timeoutMs: 180000  # Timeout for assistant operations
+  #   # Should only be one or the other, either `supportedIds` or `excludedIds`
+  #   supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
+  #   # excludedIds: ["asst_excludedAssistantId"]
+  #   # Only show assistants that the user created or that were created externally (e.g. in Assistants playground).
+  #   # privateAssistants: false # Does not work with `supportedIds` or `excludedIds`
+  #   # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
+  #   retrievalModels: ["gpt-4-turbo-preview"]
+  #   # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+  #   capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
+ agents:
+    # (optional) Default recursion depth for agents, defaults to 25
+    recursionLimit: 5
+    # (optional) Max recursion depth for agents, defaults to 25
+    maxRecursionLimit: 10
+    # (optional) Disable the builder interface for agents
+    disableBuilder: false
+  #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+    capabilities: ["file_search", "actions", "tools"]
+ custom:
+    # deepseek
+   # https://platform.deepseek.com/api_keys
+   # Model list: https://platform.deepseek.com/api-docs/pricing
+  - name: "deepseek"
+    apiKey: "${DEEPSEEK_API_KEY}"
+    baseURL: "https://api.deepseek.com/v1"
+    models:
+      default: ["deepseek-chat", "deepseek-coder", "deepseek-reasoner"]
+      fetch: false
+    titleConvo: true
+    titleModel: "deepseek-chat"
+    summarize: false
+    summaryModel: "deepseek-chat"
+    forcePrompt: false
+    modelDisplayLabel: "DeepSeek"
+    
+    # Custom interface configuration
+interface:
+  customWelcome: "Welcome to RegPilot - Chat!"
+  # Privacy policy settings
+  privacyPolicy:
+    externalUrl: 'https://www.generis.ai/utilities/privacy-policy'
+    openNewTab: true
+  endpointsMenu: true
+  modelSelect: true
+  parameters: true
+  sidePanel: true
+  presets: true
+  prompts: true
+  bookmarks: true
+  multiConvo: true
+  agents: true
+  #code interpreter
+  runCode: false
+    # Terms of service
+  termsOfService:
+    externalUrl: 'https://www.generis.ai/utilities/terms'
+    openNewTab: true
+    modalAcceptance: true
+    modalTitle: "Terms of Service for RegPilot Chat"
+    modalContent: |
+      # Terms and Conditions for RegPilot Chat
+
+      *Effective Date: 1 June 2025*
+
+      Welcome to RegPilot Chat. These Terms of Service ("Terms") govern your use of our website and the services we offer. By accessing or using the Website, you agree to be bound by these Terms and our Privacy Policy.
+      ## 1. User Data
+
+      We collect personal data, such as your name and email address as described in our Privacy Policy. This information is collected to provide and improve our services, process transactions, and communicate with you.
+
+      ## 2. Non-Personal Data Collection
+
+      The Website uses cookies to enhance user experience, analyze site usage, and facilitate certain functionalities. By using the Website, you consent to the use of cookies in accordance with our Privacy Policy.
+
+      ## 3. Use of the Website
+
+      You agree to use the Website only for lawful purposes and in a manner that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Website. Prohibited behavior includes harassing or causing distress or inconvenience to any person, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within the Website.
+
+      ## 4. Governing Law
+
+      These Terms shall be governed by and construed in accordance with the laws of Hong Kong, without giving effect to any principles of conflicts of law.
+
+      ## 5. Changes to the Terms
+
+      We reserve the right to modify these Terms at any time. Your continued use of the Website after such changes have been notified will constitute your consent to such changes.
+
+      ## 6. Contact Information
+
+      If you have any questions about these Terms, please contact us at info@generis.ai.
+
+      By using the Website, you acknowledge that you have read these Terms of Service and agree to be bound by them.
