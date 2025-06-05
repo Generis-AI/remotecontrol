@@ -65,7 +65,7 @@ registration:
 balance:
   enabled: true
   startBalance: 30000
-  autoRefillEnabled: false
+  autoRefillEnabled: true
   refillIntervalValue: 1
   refillIntervalUnit: 'days'
   refillAmount: 1000
@@ -110,11 +110,11 @@ rateLimits:
     userWindowInMinutes: 60  # Rate limit window for conversation imports per user
 
 # Example Actions Object Structure
-actions:
-  allowedDomains:
-    - "swapi.dev"
-    - "librechat.ai"
-    - "google.com"
+#actions:
+#  allowedDomains:
+#    - "swapi.dev"
+#    - "librechat.ai"
+#    - "google.com"
 
 # Example MCP Servers Object Structure
 # mcpServers:
@@ -165,7 +165,7 @@ endpoints:
     # (optional) Max recursion depth for agents, defaults to 25
     maxRecursionLimit: 10
     # (optional) Disable the builder interface for agents
-    disableBuilder: false
+    disableBuilder: true
   #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
     capabilities: ["file_search", "actions", "tools"]
  custom:
@@ -200,7 +200,8 @@ interface:
   prompts: true
   bookmarks: true
   multiConvo: true
-  agents: true
+  #turned off agents
+  agents: false
   #code interpreter
   runCode: false
     # Terms of service
