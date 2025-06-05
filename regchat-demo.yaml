@@ -214,29 +214,55 @@ interface:
 
       *Effective Date: 1 June 2025*
 
-      Welcome to RegPilot Chat. These Terms of Service ("Terms") govern your use of our website and the services we offer. By accessing or using the Website, you agree to be bound by these Terms and our Privacy Policy.
-      ## 1. User Data
+        1. Acceptance of Terms
+        By creating an account on chat.regpilot.net ("Demo Service"), you agree to these Terms of Service ("Terms") and our Privacy Policy. If you represent an organization, you confirm authority to bind them to these Terms.
+        
+        2. Service Description
+        The Demo Service is a limited, evaluation-only version of RegPilot Chat, an enterprise-grade LLM wrapper enabling organizations to deploy private AI chat interfaces. This is not a production environment. Features, availability, and data retention may differ from the full product.
 
-      We collect personal data, such as your name and email address as described in our Privacy Policy. This information is collected to provide and improve our services, process transactions, and communicate with you.
-
-      ## 2. Non-Personal Data Collection
-
-      The Website uses cookies to enhance user experience, analyze site usage, and facilitate certain functionalities. By using the Website, you consent to the use of cookies in accordance with our Privacy Policy.
-
-      ## 3. Use of the Website
-
-      You agree to use the Website only for lawful purposes and in a manner that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Website. Prohibited behavior includes harassing or causing distress or inconvenience to any person, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within the Website.
-
-      ## 4. Governing Law
-
-      These Terms shall be governed by and construed in accordance with the laws of Hong Kong, without giving effect to any principles of conflicts of law.
-
-      ## 5. Changes to the Terms
-
-      We reserve the right to modify these Terms at any time. Your continued use of the Website after such changes have been notified will constitute your consent to such changes.
-
-      ## 6. Contact Information
-
-      If you have any questions about these Terms, please contact us at info@generis.ai.
-
-      By using the Website, you acknowledge that you have read these Terms of Service and agree to be bound by them.
+        3. Token Limitations & Usage
+        Token Allocation:
+        You receive a limited token allowance for LLM interactions.
+        Tokens increase by 1,000 daily.
+        Fair Use:
+        Circumventing token limits (e.g., multiple accounts, automation) is prohibited.
+        We may throttle, suspend, or terminate accounts exceeding reasonable use.
+        
+        4. Account Requirements
+        Provide accurate registration details.
+        You are responsible for account security and all activities under your account.
+        Demo accounts are non-transferable and may be deactivated after 90 days of inactivity.
+        
+        5. Acceptable Use
+        You agree not to:
+        Use the Demo Service for commercial purposes, sensitive data, or illegal activities.
+        Reverse-engineer, scrape, or exploit vulnerabilities.
+        Generate harmful, deceptive, or abusive content.
+        Impersonate others or violate third-party rights.
+        
+        6. Data Handling & Privacy
+        Your Content: Inputs/outputs may be stored temporarily for troubleshooting but will not be used to train models or shared externally.
+        Privacy: Personal data is handled per our Privacy Policy.
+        Confidentiality: Do not submit confidential, proprietary, or personal data (e.g., PII, trade secrets). The Demo Service is not secure for sensitive information.
+        
+        7. Intellectual Property
+        Our Rights: RegPilot Chat, its software, and branding are owned by Generis Ai HK Limited. We grant you a limited, revocable license for evaluation.
+        Your Content: You retain ownership of inputs but grant us a license to process them for service delivery.
+        
+        8. Disclaimers & Limitations
+        "As Is" Service: The Demo Service is provided without warranties (express or implied). Availability, accuracy, and performance are not guaranteed.
+        No Liability: To the extent permitted by law, Generis Ai HK Limited is not liable for damages arising from Demo Service use.
+        Token Disclaimer: Token refills and service access are offered at our sole discretion.
+        
+        9. Termination
+        We may suspend or terminate your access:
+        
+        For breach of these Terms.
+        If token usage impacts system stability.
+        At our discretion, without prior notice.
+        
+        10. Changes to Terms
+        We may update these Terms. Continued use after changes constitutes acceptance. Material updates will be notified via email or in-app alert.
+        
+        11. Governing Law
+        These Terms are governed by the laws of Hong Kong SAR. Any disputes will be resolved in courts located in the Hong Kong SAR.
