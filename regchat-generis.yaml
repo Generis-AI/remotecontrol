@@ -1,0 +1,271 @@
+# For more information, see the Configuration Guide:
+# https://www.librechat.ai/docs/configuration/librechat_yaml
+
+# Configuration version (required)
+version: 1.2.1
+
+# Cache settings: Set to true to enable caching
+cache: true
+
+# File strategy s3/firebase
+# fileStrategy: "s3"
+fileStrategy: "firebase"
+fileConfig:
+  endpoints:
+    assistants:
+      fileLimit: 5
+      # Maximum size for an individual file in MB
+      fileSizeLimit: 10
+      # Maximum total size for all files in a single request in MB
+      totalSizeLimit: 50 
+    openAI:
+    # Disables file uploading to the OpenAI endpoint
+      disabled: false
+    default:
+      totalSizeLimit: 10
+    # Example for custom endpoints
+    # YourCustomEndpointName:
+    #   fileLimit: 2
+    #   fileSizeLimit: 5
+  # Global server file size limit in MB
+  serverFileSizeLimit: 10  
+  # Limit for user avatar image size in MB, default: 2 MB
+  avatarSizeLimit: 2
+  
+webSearch:
+  # Search Provider Configuration
+  serperApiKey: "${SERPER_API_KEY}"
+  searchProvider: "serper" # Options: "serper", "searxng"
+ 
+  # Scraper Configuration
+  firecrawlApiKey: "${FIRECRAWL_API_KEY}"
+  firecrawlApiUrl: "${FIRECRAWL_API_URL}"
+  scraperType: "firecrawl" # Options: "firecrawl", "serper"
+ 
+  # Reranker Configuration
+  jinaApiKey: "${JINA_API_KEY}"
+  cohereApiKey: "${COHERE_API_KEY}"
+  rerankerType: "jina" # Options: "jina", "cohere"
+ 
+  # General Settings
+  scraperTimeout: 7500 # Timeout in milliseconds for scraper requests (default: 7500)
+  safeSearch: 1 # Options: 0 (OFF), 1 (MODERATE - default), 2 (STRICT)
+
+# Example Cloudflare turnstile (optional)
+#turnstile:
+#  siteKey: "your-site-key-here"
+#  options:
+#    language: "auto"    # "auto" or an ISO 639-1 language code (e.g. en)
+#    size: "normal"      # Options: "normal", "compact", "flexible", or "invisible"
+
+# Example Registration Object Structure (optional)
+registration:
+  allowedDomains:
+  - "generis.ai"
+  
+# Example Balance settings
+balance:
+  enabled: true
+  startBalance: 2000000
+  autoRefillEnabled: true
+  refillIntervalValue: 1
+  refillIntervalUnit: 'days'
+  refillAmount: 75000
+
+speech:
+  speechTab:
+    conversationMode: true
+    advancedMode: false
+    speechToText:
+      engineSTT: "external"
+      languageSTT: "English (US)"
+      autoTranscribeAudio: true
+      decibelValue: -45
+      autoSendText: 0
+    textToSpeech:
+      engineTTS: "external"
+      voice: "alloy"
+      languageTTS: "en"
+      automaticPlayback: true
+      playbackRate: 1.0
+      cacheTTS: true
+  tts:
+    openai:
+      apiKey: '${TTS_API_KEY}'
+      model: 'tts-1'
+      voices: ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer']
+  stt:
+    openai:
+      apiKey: '${STT_API_KEY}'
+      model: 'whisper-1'
+
+rateLimits:
+  fileUploads:
+    ipMax: 100
+    ipWindowInMinutes: 60  # Rate limit window for file uploads per IP
+    userMax: 50
+    userWindowInMinutes: 60  # Rate limit window for file uploads per user
+  conversationsImport:
+    ipMax: 100
+    ipWindowInMinutes: 60  # Rate limit window for conversation imports per IP
+    userMax: 50
+    userWindowInMinutes: 60  # Rate limit window for conversation imports per user
+
+# Example Actions Object Structure
+#actions:
+#  allowedDomains:
+#    - "swapi.dev"
+#    - "librechat.ai"
+#    - "google.com"
+
+# Example MCP Servers Object Structure
+# mcpServers:
+#   everything:
+#     # type: sse # type can optionally be omitted
+#     url: http://localhost:3001/sse
+#     timeout: 60000  # 1 minute timeout for this server, this is the default timeout for MCP servers.
+#   puppeteer:
+#     type: stdio
+#     command: npx
+#     args:
+#       - -y
+#       - "@modelcontextprotocol/server-puppeteer"
+#     timeout: 300000  # 5 minutes timeout for this server
+#   filesystem:
+#     # type: stdio
+#     command: npx
+#     args:
+#       - -y
+#       - "@modelcontextprotocol/server-filesystem"
+#       - /home/user/LibreChat/
+#     iconPath: /home/user/LibreChat/client/public/assets/logo.svg
+#   mcp-obsidian:
+#     command: npx
+#     args:
+#       - -y
+#       - "mcp-obsidian"
+#       - /path/to/obsidian/vault
+
+# Definition of custom endpoints
+endpoints:
+ assistants:
+   disableBuilder: true # Disable Assistants Builder Interface by setting to `true`
+#   pollIntervalMs: 3000  # Polling interval for checking assistant updates
+#   timeoutMs: 180000  # Timeout for assistant operations
+  #   # Should only be one or the other, either `supportedIds` or `excludedIds`
+  #   supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
+  #   # excludedIds: ["asst_excludedAssistantId"]
+  #   # Only show assistants that the user created or that were created externally (e.g. in Assistants playground).
+  #   # privateAssistants: false # Does not work with `supportedIds` or `excludedIds`
+  #   # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
+  #   retrievalModels: ["gpt-4-turbo-preview"]
+  #   # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+  #   capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
+ agents:
+    # (optional) Default recursion depth for agents, defaults to 25
+    recursionLimit: 5
+    # (optional) Max recursion depth for agents, defaults to 25
+    maxRecursionLimit: 10
+    # (optional) Disable the builder interface for agents
+    disableBuilder: true
+  #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+    capabilities: ["file_search", "actions", "tools", "web_search", "ocr"]
+ custom:
+    # deepseek
+   # https://platform.deepseek.com/api_keys
+   # Model list: https://platform.deepseek.com/api-docs/pricing
+  - name: "deepseek"
+    apiKey: "${DEEPSEEK_API_KEY}"
+    baseURL: "https://api.deepseek.com/v1"
+    models:
+      default: ["deepseek-chat", "deepseek-coder", "deepseek-reasoner"]
+      fetch: false
+    titleConvo: true
+    titleModel: "deepseek-chat"
+    summarize: false
+    summaryModel: "deepseek-chat"
+    forcePrompt: false
+    modelDisplayLabel: "DeepSeek"
+    
+    # Custom interface configuration
+interface:
+  customWelcome: "Welcome to Generis - Chat!"
+  # Privacy policy settings
+  privacyPolicy:
+    externalUrl: 'https://www.generis.ai/utilities/privacy-policy'
+    openNewTab: true
+  endpointsMenu: true
+  modelSelect: true
+  parameters: true
+  sidePanel: true
+  presets: true
+  prompts: true
+  bookmarks: true
+  multiConvo: true
+  #turned off agents
+  agents: true
+  #code interpreter
+  runCode: false
+    # Terms of service
+  termsOfService:
+    externalUrl: 'https://www.generis.ai/utilities/terms'
+    openNewTab: true
+    modalAcceptance: true
+    modalTitle: "Terms of Service for RegPilot Chat"
+    modalContent: |
+      # Terms and Conditions for RegPilot Chat
+
+      *Effective Date: 1 June 2025*
+
+        1. Acceptance of Terms
+        By creating an account on chat.regpilot.net ("Demo Service"), you agree to these Terms of Service ("Terms") and our Privacy Policy. If you represent an organization, you confirm authority to bind them to these Terms.
+        
+        2. Service Description
+        The Demo Service is a limited, evaluation-only version of RegPilot Chat, an enterprise-grade LLM wrapper enabling organizations to deploy private AI chat interfaces. This is not a production environment. Features, availability, and data retention may differ from the full product.
+
+        3. Token Limitations & Usage
+        Token Allocation:
+        You receive a limited token allowance for LLM interactions.
+        Tokens increase by 1,000 daily.
+        Fair Use:
+        Circumventing token limits (e.g., multiple accounts, automation) is prohibited.
+        We may throttle, suspend, or terminate accounts exceeding reasonable use.
+        
+        4. Account Requirements
+        Provide accurate registration details.
+        You are responsible for account security and all activities under your account.
+        Demo accounts are non-transferable and may be deactivated after 90 days of inactivity.
+        
+        5. Acceptable Use
+        You agree not to:
+        Use the Demo Service for commercial purposes, sensitive data, or illegal activities.
+        Reverse-engineer, scrape, or exploit vulnerabilities.
+        Generate harmful, deceptive, or abusive content.
+        Impersonate others or violate third-party rights.
+        
+        6. Data Handling & Privacy
+        Your Content: Inputs/outputs may be stored temporarily for troubleshooting but will not be used to train models or shared externally.
+        Privacy: Personal data is handled per our Privacy Policy.
+        Confidentiality: Do not submit confidential, proprietary, or personal data (e.g., PII, trade secrets). The Demo Service is not secure for sensitive information.
+        
+        7. Intellectual Property
+        Our Rights: RegPilot Chat, its software, and branding are owned by Generis Ai HK Limited. We grant you a limited, revocable license for evaluation.
+        Your Content: You retain ownership of inputs but grant us a license to process them for service delivery.
+        
+        8. Disclaimers & Limitations
+        "As Is" Service: The Demo Service is provided without warranties (express or implied). Availability, accuracy, and performance are not guaranteed.
+        No Liability: To the extent permitted by law, Generis Ai HK Limited is not liable for damages arising from Demo Service use.
+        Token Disclaimer: Token refills and service access are offered at our sole discretion.
+        
+        9. Termination
+        We may suspend or terminate your access:
+        
+        For breach of these Terms.
+        If token usage impacts system stability.
+        At our discretion, without prior notice.
+        
+        10. Changes to Terms
+        We may update these Terms. Continued use after changes constitutes acceptance. Material updates will be notified via email or in-app alert.
+        
+        11. Governing Law
+        These Terms are governed by the laws of Hong Kong SAR. Any disputes will be resolved in courts located in the Hong Kong SAR.
