@@ -38,13 +38,23 @@ fileConfig:
   avatarSizeLimit: 2
   
 webSearch:
-  # ... variable configurations ...
-  searchProvider: "serper"    # Only use Serper for search
+  # Search Provider Configuration
   serperApiKey: "${SERPER_API_KEY}"
-  scraperType: "firecrawl"    # Only use Firecrawl for scraping
+  searchProvider: "serper" # Options: "serper", "searxng"
+ 
+  # Scraper Configuration
   firecrawlApiKey: "${FIRECRAWL_API_KEY}"
-  rerankerType: "jina"        # Only use Jina for reranking
+  firecrawlApiUrl: "${FIRECRAWL_API_URL}"
+  scraperType: "firecrawl" # Options: "firecrawl", "serper"
+ 
+  # Reranker Configuration
   jinaApiKey: "${JINA_API_KEY}"
+  cohereApiKey: "${COHERE_API_KEY}"
+  rerankerType: "jina" # Options: "jina", "cohere"
+ 
+  # General Settings
+  scraperTimeout: 7500 # Timeout in milliseconds for scraper requests (default: 7500)
+  safeSearch: 1 # Options: 0 (OFF), 1 (MODERATE - default), 2 (STRICT)
 
 # Example Cloudflare turnstile (optional)
 #turnstile:
@@ -64,7 +74,16 @@ registration:
   - "parkwayasia.com"
   - "hatariexpress.com"
   - "draco-investments.com"
-
+  - "jainglobal.com"
+  - "capulaglobal.com"
+  - "helvedcapital.com"
+  - "bluepoolcapital.com"
+  - "complusam.com"
+  - "parkwayasia.com"
+  - "goldstreamfund.com"
+  - "turiyacap.com"
+  - "kaleido-cap.com"
+  
 # Example Balance settings
 balance:
   enabled: true
