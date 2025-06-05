@@ -40,11 +40,11 @@ fileConfig:
 webSearch:
   # ... variable configurations ...
   searchProvider: "serper"    # Only use Serper for search
-  serperApiKey: "${CUSTOM_SERPER_API_KEY}"
+  serperApiKey: "${SERPER_API_KEY}"
   scraperType: "firecrawl"    # Only use Firecrawl for scraping
-  firecrawlApiKey: "${CUSTOM_FIRECRAWL_API_KEY}"
+  firecrawlApiKey: "${FIRECRAWL_API_KEY}"
   rerankerType: "jina"        # Only use Jina for reranking
-  jinaApiKey: "${CUSTOM_JINA_API_KEY}"
+  jinaApiKey: "${JINA_API_KEY}"
 
 # Example Cloudflare turnstile (optional)
 #turnstile:
