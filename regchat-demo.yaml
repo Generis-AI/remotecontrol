@@ -65,10 +65,9 @@ webSearch:
 
 # Example Registration Object Structure (optional)
 registration:
-  socialLogins: ['github', 'google', 'apple']
   allowedDomains:
   - "generis.ai"
-  - "oasiscm.com"
+  - "hksi.org"
   - "ulu-limited.com"
   - "wfmasia.com"
   - "parkwayasia.com"
@@ -84,7 +83,8 @@ registration:
   - "turiyacap.com"
   - "kaleido-cap.com"
   - "hk.oasiscm.com"
-  
+  - "oasiscm.com"
+
 # Example Balance settings
 balance:
   enabled: true
