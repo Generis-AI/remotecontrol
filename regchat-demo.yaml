@@ -84,15 +84,16 @@ registration:
   - "turiyacap.com"
   - "kaleido-cap.com"
   - "hk.oasiscm.com"
+  - "outlook.com"
   
 # Example Balance settings
 balance:
   enabled: true
-  startBalance: 300000
+  startBalance: 500000
   autoRefillEnabled: true
-  refillIntervalValue: 1
+  refillIntervalValue: 3
   refillIntervalUnit: 'days'
-  refillAmount: 3000
+  refillAmount: 100000
 
 speech:
   speechTab:
