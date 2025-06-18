@@ -66,11 +66,11 @@ registration:
 # Example Balance settings
 balance:
   enabled: true
-  startBalance: 2000000
+  startBalance: 5000000
   autoRefillEnabled: true
   refillIntervalValue: 1
   refillIntervalUnit: 'days'
-  refillAmount: 75000
+  refillAmount: 2000000
 
 speech:
   speechTab:
