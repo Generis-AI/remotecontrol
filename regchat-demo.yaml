@@ -85,15 +85,16 @@ registration:
   - "hk.oasiscm.com"
   - "oasiscm.com"
   - "hkbitex.com.hk"
+  - "cuhk.edu.hk"
 
 # Example Balance settings
 balance:
   enabled: true
   startBalance: 500000
   autoRefillEnabled: true
-  refillIntervalValue: 3
+  refillIntervalValue: 2
   refillIntervalUnit: 'days'
-  refillAmount: 100000
+  refillAmount: 200000
 
 speech:
   speechTab:
