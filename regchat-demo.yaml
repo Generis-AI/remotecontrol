@@ -84,8 +84,8 @@ registration:
   - "kaleido-cap.com"
   - "hk.oasiscm.com"
   - "oasiscm.com"
-  - "hkbitex.com.hk"
   - "cuhk.edu.hk"
+  - "link.cuhk.edu.hk"
 
 # Example Balance settings
 balance:
@@ -94,7 +94,7 @@ balance:
   autoRefillEnabled: true
   refillIntervalValue: 2
   refillIntervalUnit: 'days'
-  refillAmount: 200000
+  refillAmount: 100000
 
 speech:
   speechTab:
