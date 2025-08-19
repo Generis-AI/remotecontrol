@@ -186,7 +186,20 @@ endpoints:
     summaryModel: "deepseek-chat"
     forcePrompt: false
     modelDisplayLabel: "DeepSeek"
-    
+  - name: "xai"
+    apiKey: "${XAI_API_KEY}"
+    baseURL: "https://api.x.ai/v1"
+    models:
+      default: ["grok-4-latest", "grok-3-mini"]
+      fetch: false
+    titleConvo: true
+    titleMethod: "completion"
+    titleModel: "grok-3-mini"
+    summarize: false
+    summaryModel: "grok-3-mini"
+    forcePrompt: false
+    modelDisplayLabel: "Grok"
+
     # Custom interface configuration
 interface:
   customWelcome: "Welcome to Generis - Chat!"

@@ -84,15 +84,14 @@ registration:
   - "kaleido-cap.com"
   - "hk.oasiscm.com"
   - "oasiscm.com"
-  - "cuhk.edu.hk"
-  - "link.cuhk.edu.hk"
+  - "leeandso.com"
 
 # Example Balance settings
 balance:
   enabled: true
   startBalance: 500000
   autoRefillEnabled: true
-  refillIntervalValue: 2
+  refillIntervalValue: 1
   refillIntervalUnit: 'days'
   refillAmount: 100000
 
@@ -210,7 +209,19 @@ endpoints:
     summaryModel: "deepseek-chat"
     forcePrompt: false
     modelDisplayLabel: "DeepSeek"
-    
+  - name: "xai"
+    apiKey: "${XAI_API_KEY}"
+    baseURL: "https://api.x.ai/v1"
+    models:
+      default: ["grok-3-mini"]
+      fetch: false
+    titleConvo: true
+    titleMethod: "completion"
+    titleModel: "grok-3-mini"
+    summarize: false
+    summaryModel: "grok-3-mini"
+    forcePrompt: false
+    modelDisplayLabel: "Grok"
     # Custom interface configuration
 interface:
   customWelcome: "Welcome to RegPilot - Chat!"
