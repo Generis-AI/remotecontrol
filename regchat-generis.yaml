@@ -8,8 +8,8 @@ version: 1.2.1
 cache: true
 
 # File strategy s3/firebase
-# fileStrategy: "s3"
-fileStrategy: "firebase"
+fileStrategy: "s3"
+#fileStrategy: "firebase"
 fileConfig:
   endpoints:
     assistants:
