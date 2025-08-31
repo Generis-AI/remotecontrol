@@ -167,9 +167,9 @@ endpoints:
     # (optional) Max recursion depth for agents, defaults to 25
     maxRecursionLimit: 50
     # (optional) Disable the builder interface for agents
-    disableBuilder: true
+    disableBuilder: false
   #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-    capabilities: ["file_search", "actions", "tools", "web_search", "ocr"]
+    capabilities: ["file_search", "actions", "tools", "artifacts", "web_search", "ocr"]
  custom:
     # deepseek
    # https://platform.deepseek.com/api_keys
