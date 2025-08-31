@@ -85,6 +85,7 @@ registration:
   - "hk.oasiscm.com"
   - "oasiscm.com"
   - "leeandso.com"
+  - "@tokumalabs.com"
 
 # Example Balance settings
 balance:
