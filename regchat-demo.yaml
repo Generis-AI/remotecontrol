@@ -215,13 +215,13 @@ endpoints:
     apiKey: "${XAI_API_KEY}"
     baseURL: "https://api.x.ai/v1"
     models:
-      default: ["grok-3-mini", "grok-code-fast"]
+      default: ["grok-4-fast", "grok-code-fast"]
       fetch: false
     titleConvo: true
     titleMethod: "completion"
-    titleModel: "grok-3-mini"
-    summarize: false
-    summaryModel: "grok-3-mini"
+    titleModel: "grok-4-fast"
+    summarize: true
+    summaryModel: "grok-4-fast-non-reasoning"
     forcePrompt: false
     modelDisplayLabel: "Grok"
     # Custom interface configuration
