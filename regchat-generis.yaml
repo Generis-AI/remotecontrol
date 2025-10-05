@@ -11,23 +11,32 @@ cache: true
 fileStrategy: "s3"
 #fileStrategy: "firebase"
 fileConfig:
-  endpoints:
-    assistants:
-      fileLimit: 5
-      # Maximum size for an individual file in MB
-      fileSizeLimit: 10
-      # Maximum total size for all files in a single request in MB
-      totalSizeLimit: 50 
-    openAI:
-    # Disables file uploading to the OpenAI endpoint
-      disabled: false
-    default:
-      totalSizeLimit: 10
-    # Example for custom endpoints
-    # YourCustomEndpointName:
-    #   fileLimit: 2
-    #   fileSizeLimit: 5
-  # Global server file size limit in MB
+  # Maximum tokens from text files before truncation
+  fileTokenLimit: 640000
+  
+  # Files matching these patterns use OCR (if configured)
+  ocr:
+    strategy: "mistral_ocr"
+    apiKey: "${OCR_API_KEY}"
+    baseURL: "https://api.mistral.ai/v1"
+    mistralModel: "mistral-ocr-latest"
+    supportedMimeTypes:
+      - "^image/(jpeg|gif|png|webp|heic|heif)$"
+      - "^application/pdf$"
+      - "^application/vnd\\.openxmlformats-officedocument\\.(wordprocessingml\\.document|presentationml\\.presentation|spreadsheetml\\.sheet)$"
+      - "^application/vnd\\.ms-(word|powerpoint|excel)$"
+      - "^application/epub\\+zip$"
+  
+  # Files matching these patterns use text parsing
+  text:
+    supportedMimeTypes:
+      - "^text/(plain|markdown|csv|json|xml|html|css|javascript|typescript|x-python|x-java|x-csharp|x-php|x-ruby|x-go|x-rust|x-kotlin|x-swift|x-scala|x-perl|x-lua|x-shell|x-sql|x-yaml|x-toml)$"
+  
+  # Files matching these patterns use STT (if configured)
+  stt:
+    supportedMimeTypes:
+      - "^audio/(mp3|mpeg|mpeg3|wav|wave|x-wav|ogg|vorbis|mp4|x-m4a|flac|x-flac|webm)$"
+
   serverFileSizeLimit: 10  
   # Limit for user avatar image size in MB, default: 2 MB
   avatarSizeLimit: 2
@@ -169,7 +178,15 @@ endpoints:
     # (optional) Disable the builder interface for agents
     disableBuilder: false
   #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-    capabilities: ["file_search", "actions", "tools", "artifacts", "web_search", "ocr"]
+    capabilities: 
+      - "file_search"
+      - "actions"
+      - "tools"
+      - "artifacts"
+      - "web_search"
+      - "ocr"
+      - "context"
+
  custom:
     # deepseek
    # https://platform.deepseek.com/api_keys
