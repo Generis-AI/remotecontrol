@@ -181,37 +181,37 @@ endpoints:
     maxCitationsPerFile: 7    # Maximum citations from each file (1-10)
     minRelevanceScore: 0.45   # Minimum relevance score threshold (0.0-1.0)
  
- custom:
+  custom:
     # deepseek
-   # https://platform.deepseek.com/api_keys
-   # Model list: https://platform.deepseek.com/api-docs/pricing
-  - name: "deepseek"
-    apiKey: "${DEEPSEEK_API_KEY}"
-    baseURL: "https://api.deepseek.com/v1"
-    models:
-      default: ["deepseek-chat", "deepseek-coder", "deepseek-reasoner"]
-      fetch: false
-    titleConvo: true
-    titleModel: "deepseek-chat"
-    summarize: false
-    summaryModel: "deepseek-chat"
-    forcePrompt: false
-    modelDisplayLabel: "DeepSeek"
-  - name: "xai"
-    apiKey: "${XAI_API_KEY}"
-    baseURL: "https://api.x.ai/v1"
-    models:
-      default: ["grok-4-latest","grok-4-fast","grok-code-fast"]
-      fetch: false
-    titleConvo: true
-    titleMethod: "completion"
-    titleModel: "grok-4-fast"
-    summarize: true
-    summaryModel: "grok-4-fast-non-reasoning"
-    forcePrompt: false
-    modelDisplayLabel: "Grok"
+    # https://platform.deepseek.com/api_keys
+    # Model list: https://platform.deepseek.com/api-docs/pricing
+    - name: "deepseek"
+      apiKey: "${DEEPSEEK_API_KEY}"
+      baseURL: "https://api.deepseek.com/v1"
+      models:
+        default: ["deepseek-chat", "deepseek-coder", "deepseek-reasoner"]
+        fetch: false
+      titleConvo: true
+      titleModel: "deepseek-chat"
+      summarize: false
+      summaryModel: "deepseek-chat"
+      forcePrompt: false
+      modelDisplayLabel: "DeepSeek"
+    - name: "xai"
+      apiKey: "${XAI_API_KEY}"
+      baseURL: "https://api.x.ai/v1"
+      models:
+        default: ["grok-4-latest", "grok-4-fast", "grok-code-fast"]
+        fetch: false
+      titleConvo: true
+      titleMethod: "completion"
+      titleModel: "grok-4-fast"
+      summarize: true
+      summaryModel: "grok-4-fast-non-reasoning"
+      forcePrompt: false
+      modelDisplayLabel: "Grok"
 
-#Custom interface configuration
+# Custom interface configuration
 interface:
   customWelcome: "Welcome to Generis - Chat!"
   # Privacy policy settings
@@ -226,11 +226,11 @@ interface:
   prompts: true
   bookmarks: true
   multiConvo: true
-  #turned off agents
+  # turned off agents
   agents: true
-  #code interpreter
+  # code interpreter
   runCode: false
-    # Terms of service
+  # Terms of service
   termsOfService:
     externalUrl: 'https://www.generis.ai/utilities/terms'
     openNewTab: true
