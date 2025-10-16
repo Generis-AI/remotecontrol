@@ -170,23 +170,18 @@ endpoints:
   #   retrievalModels: ["gpt-4-turbo-preview"]
   #   # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
   #   capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
- agents:
-    # (optional) Default recursion depth for agents, defaults to 25
+endpoints:
+  agents:
     recursionLimit: 50
-    # (optional) Max recursion depth for agents, defaults to 25
-    maxRecursionLimit: 50
-    # (optional) Disable the builder interface for agents
+    maxRecursionLimit: 100
     disableBuilder: false
-  #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-    capabilities: 
-      - "file_search"
-      - "actions"
-      - "tools"
-      - "artifacts"
-      - "web_search"
-      - "ocr"
-      - "context"
-
+    # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+    capabilities: ["file_search", "actions", "tools", "artifacts", "context", "ocr", "chain", "web_search"]
+    # (optional) File citation configuration for file_search capability
+    maxCitations: 30          # Maximum total citations in responses (1-50)
+    maxCitationsPerFile: 7    # Maximum citations from each file (1-10)
+    minRelevanceScore: 0.45   # Minimum relevance score threshold (0.0-1.0)
+ 
  custom:
     # deepseek
    # https://platform.deepseek.com/api_keys
