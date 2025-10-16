@@ -207,7 +207,7 @@ endpoints:
     apiKey: "${XAI_API_KEY}"
     baseURL: "https://api.x.ai/v1"
     models:
-      default: ["grok-4-latest", "grok-4-fast" ,"grok-code-fast"]
+      default: ["grok-4-latest","grok-4-fast","grok-code-fast"]
       fetch: false
     titleConvo: true
     titleMethod: "completion"
@@ -217,7 +217,7 @@ endpoints:
     forcePrompt: false
     modelDisplayLabel: "Grok"
 
-    # Custom interface configuration
+#Custom interface configuration
 interface:
   customWelcome: "Welcome to Generis - Chat!"
   # Privacy policy settings
