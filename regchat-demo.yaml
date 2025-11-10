@@ -86,9 +86,8 @@ registration:
   - "oasiscm.com"
   - "leeandso.com"
   - "tokumalabs.com"
-  - "cuhk.edu.hk"
-  - "link.cuhk.edu.hk"
   - "leanarcim.com"
+  - "ims.edu.hk"
 
 # Example Balance settings
 balance:
