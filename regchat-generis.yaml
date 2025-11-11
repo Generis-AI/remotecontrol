@@ -94,9 +94,9 @@ speech:
       autoSendText: 0
     textToSpeech:
       engineTTS: "external"
-      voice: "alloy"
+      voice: "fable"
       languageTTS: "en"
-      automaticPlayback: true
+      automaticPlayback: false
       playbackRate: 1.0
       cacheTTS: true
   tts:
