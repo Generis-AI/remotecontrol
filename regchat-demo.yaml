@@ -92,11 +92,11 @@ registration:
 # Example Balance settings
 balance:
   enabled: true
-  startBalance: 500000
+  startBalance: 1000000
   autoRefillEnabled: true
   refillIntervalValue: 1
   refillIntervalUnit: 'days'
-  refillAmount: 100000
+  refillAmount: 250000
 
 speech:
   speechTab:
@@ -193,15 +193,17 @@ endpoints:
     # (optional) Max recursion depth for agents, defaults to 25
     maxRecursionLimit: 25
     # (optional) Disable the builder interface for agents
-    disableBuilder: true
+    disableBuilder: false
   #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-    capabilities: 
+    capabilities:
       - "file_search"
       - "actions"
       - "tools"
       - "artifacts"
-      - "web_search"
       - "context"
+      - "ocr"
+      - "chain"
+      - "web_search"
       
  custom:
     # deepseek
